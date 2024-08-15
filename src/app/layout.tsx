@@ -10,7 +10,7 @@ import { kalamFont } from "~/fonts/kalam";
 
 export const metadata: Metadata = {
   title: "Image Insight",
-  description: "Get instantly feeback on your pictures!",
+  description: "Get feedback on your pictures instantly!",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
@@ -26,7 +26,7 @@ export default function RootLayout({
         <JotaiProvider>
           <header className="fixed top-4 w-full text-center">
             <h1 className="font-kalam text-3xl">Image Insider</h1>
-            <p className="mt-2">Get instantly feeback on your pictures!</p>
+            <p className="mt-2">Get feedback on your pictures instantly!</p>
           </header>
           <TRPCReactProvider>{children}</TRPCReactProvider>
           <footer className="absolute bottom-4 w-full text-center">

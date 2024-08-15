@@ -1,5 +1,5 @@
 <h1 align="center">
-  Image Insight
+  <a href="https://devpost.com/software/image-insight" target="_blank">Image Insight</a>
   <br />
   <a href="https://www.linkedin.com/in/alexandre-costa-401699199">
     <img alt="Linkedin" src="https://img.shields.io/badge/-Alexandre%20Costa-29B6D1?label=Linkedin&logo=linkedin&style=flat-square">

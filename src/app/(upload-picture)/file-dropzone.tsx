@@ -6,6 +6,7 @@ import Image from "next/image";
 import { type FileRejection, useFileDropzone } from "~/hooks";
 import { cn, getFileURL } from "~/utils";
 import { uploadedFileAtom } from "./uploaded-file-atom";
+import { Alert } from "~/components/ui";
 
 const ACCEPT_IMAGE_MIMES = [".png", ".jpg", ".jpeg", ".webp"];
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
@@ -14,11 +15,13 @@ export function FileDropzone() {
   const [isDragActive, setIsDragActive] = useState(false);
   const [isDraggingOver, setIsDraggingOver] = useState(false);
   const [uploadedFile, setUploadedFile] = useAtom(uploadedFileAtom);
+  const [errorMessage, setErrorMessage] = useState<string | undefined>();
 
   const onDrop = useCallback(
     (acceptedFiles: File[], fileRejections: FileRejection[]) => {
       setIsDragActive(false);
       setIsDraggingOver(false);
+      setErrorMessage(fileRejections[0]?.errors[0]?.message);
       const droppedFile = acceptedFiles?.[0];
       if (droppedFile) {
         setUploadedFile(droppedFile);
@@ -44,6 +47,7 @@ export function FileDropzone() {
     onDragOver: () => setIsDraggingOver(true),
     onError: (error) => {
       console.error(error);
+      setErrorMessage(error?.message ?? "Something went wrong");
     },
   });
 
@@ -107,6 +111,12 @@ export function FileDropzone() {
           </p>
         </div>
       </div>
+      {errorMessage && (
+        <Alert variant="destructive">
+          <Alert.Title>Error</Alert.Title>
+          <Alert.Description>{errorMessage}</Alert.Description>
+        </Alert>
+      )}
       <p>Only support {ACCEPT_IMAGE_MIMES.join(", ")} files</p>
       {uploadedFileURL && (
         <ul>

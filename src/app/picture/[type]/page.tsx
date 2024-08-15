@@ -28,7 +28,7 @@ export default function PictureType({
     reader.onload = function () {
       if (reader.result) {
         feedback.mutate({
-          base64file: reader.result as string,
+          file: reader.result as string,
           type: params.type,
         });
       }

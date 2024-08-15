@@ -113,14 +113,17 @@ export function FileDropzone() {
           <li>
             <div className="rounded-md border border-gray-500">
               <div className="flex justify-between p-2">
-                <Image
-                  width={72}
-                  height={72}
-                  objectFit="contain"
-                  src={uploadedFileURL}
-                  alt="Uploaded Image Preview"
-                  className="rounded-md"
-                />
+                <div className="flex items-center gap-2">
+                  <Image
+                    width={72}
+                    height={72}
+                    objectFit="contain"
+                    src={uploadedFileURL}
+                    alt="Uploaded Image Preview"
+                    className="rounded-md"
+                  />
+                  <span>{uploadedFile?.name}</span>
+                </div>
 
                 <button
                   type="button"
